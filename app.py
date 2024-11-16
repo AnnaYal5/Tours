@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import data
 
 
 app=Flask(__name__)
@@ -6,7 +7,7 @@ app=Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("index.html", title=data.title,departures=data.departures,tours=data.tours)
 
 @app.route("/departures")
 def departures():
@@ -18,5 +19,4 @@ def tours():
 
 
 if __name__ == '__main__':
-
-   app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=80)
